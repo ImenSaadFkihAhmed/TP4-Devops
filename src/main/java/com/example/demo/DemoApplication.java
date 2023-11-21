@@ -17,4 +17,27 @@ public class DemoApplication {
   public String home() {
     return "Hello world! This web application created uisng java spring boot framework and depolyed in kubernetes .";
   }
+  @RequestMapping("/revesre")
+  public static String reverseString(String input) {
+        if (input == null) {
+            return null;
+        }
+
+        char[] charArray = input.toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+
+        while (left < right) {
+            // Swap characters at left and right indices
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+
+            // Move indices towards the center
+            left++;
+            right--;
+        }
+
+        return new String(charArray);
+    }
 }
